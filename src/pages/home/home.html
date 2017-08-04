@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-toolbar>
+    <ion-navbar>
+      <ion-title>Bluetooth Serial</ion-title>
+    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="discoverUnpairedDevices()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-item-group>
+    <ion-item-divider color="light">Dispositivos vinculados</ion-item-divider>
+    <button ion-item *ngFor="let PairDevice of devices" (click)="connectToDevice(PairDevice.address)">
+        <h2>{{PairDevice.name}}</h2>
+        <p>{{PairDevice.address}}</p>
+      </button>
+  </ion-item-group>
+  <ion-item-group *ngIf="unpaireds">
+    <ion-item-divider color="light">Dispositivos econtrados</ion-item-divider>
+    <button ion-item *ngFor="let UnpairDevice of unpaireds" (click)="connectToDevice(UnpairDevice.address)">
+      <h2>{{UnpairDevice.name}}</h2>
+      <p>{{UnpairDevice.address}}</p>
+    </button>
+  </ion-item-group>
+
+ 
+</ion-content>
